@@ -19,7 +19,5 @@ class User < ApplicationRecord
     validates :first_name_reading
     validates :last_name_reading
   end
-  validates :last_name_reading, presence: true
-  validates :first_name_reading, presence: true
   validates :birthday, presence: true
 end
