@@ -2,11 +2,11 @@ FactoryBot.define do
   factory :item do
     item_name         {Faker::Lorem.sentence}
     item_content      {Faker::Lorem.sentence}
-    category          {Category.all.sample}
-    status            {Status.all.sample}
-    delivery_charge   {DeliveryCharge.all.sample}
-    prefecture        {Prefecture.all.sample}
-    shipping_day      {ShippingDay.all.sample}
+    category_id       {Faker::Number.between(from:1, to: 10)}
+    status_id         {Faker::Number.between(from:1, to: 6)}
+    delivery_charge_id{Faker::Number.between(from:1, to: 2)}
+    prefecture_id     {Faker::Number.between(from:1, to: 47)}
+    shipping_day_id   {Faker::Number.between(from:1, to: 3)}
     price             {Faker::Commerce.price(range: 300..9999999).to_i}
     association :user
     

@@ -18,37 +18,37 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it 'item_nameが空では保存できない' do
-        @item.item_name = ""
+        @item.item_name = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Item name can't be blank")
       end
       it 'item_contentが空では保存できない' do
-        @item.item_content = ""
+        @item.item_content = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Item content can't be blank")
       end
-      it 'categoryが空では保存できない' do
-        @item.category = nil
+      it 'category_idが0では保存できない' do
+        @item.category_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
-      it 'statusが空では保存できない' do
-        @item.status = nil
+      it 'status_idが0では保存できない' do
+        @item.status_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
-      it 'delivery_chargeが空では保存できない' do
-        @item.delivery_charge = nil
+      it 'delivery_charge_idが0では保存できない' do
+        @item.delivery_charge_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery charge can't be blank")
       end
-      it 'prefectureが空では保存できない' do
-        @item.prefecture = nil
+      it 'prefecture_idが0では保存できない' do
+        @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
-      it 'shipping_dayが空では保存できない' do
-        @item.shipping_day = nil
+      it 'shipping_day_idが"0では保存できない' do
+        @item.shipping_day_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
