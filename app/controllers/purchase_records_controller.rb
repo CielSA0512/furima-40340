@@ -1,17 +1,16 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :set_item
   before_action :authenticate_user!
   before_action :authenticate_user_item!
   before_action :move_to_index
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    @item = Item.find(params[:item_id])
     @purchase_record_address = PurchaseRecordAddress.new
   end
 
   def create
     @purchase_record_address = PurchaseRecordAddress.new(purchase_record_params)
-    @item = Item.find(params[:item_id])
     if @purchase_record_address.valid?
       pay_item
       @purchase_record_address.save
@@ -37,6 +36,10 @@ class PurchaseRecordsController < ApplicationController
       card: purchase_record_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def item_params
